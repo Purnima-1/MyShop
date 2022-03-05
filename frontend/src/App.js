@@ -9,6 +9,7 @@ import HomeScreen from "./screens/HomeScreen";
 const App = () => {
   return (
     <>
+    {/* Test comment */}
     <Header/>
     <main>
       <Container>
