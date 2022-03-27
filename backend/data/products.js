@@ -37,6 +37,7 @@ const products = [
       countInStock: 5,
       rating: 3,
       numReviews: 12,
+      comment:"Beautiful and clear picture, best for any occasions or a trip"
     },
     {
    

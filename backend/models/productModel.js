@@ -57,7 +57,11 @@ reviews:[reviewSchema],
       type: Number,
       required: true,
       default: 0
-  }
+  },
+  numReviews:{
+    type: Number,
+    required: true
+}
 },{timestamps: true});
 
 const Products = mongoose.model('Products', productSchema)

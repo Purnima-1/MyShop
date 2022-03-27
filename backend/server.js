@@ -12,8 +12,8 @@ app.get('/', (req,res) => {
     })
 
 app.use('/api/products', productRoutes)    
-app.use(errorHandler)
 app.use(notFound)
+app.use(errorHandler)
   
 
 
