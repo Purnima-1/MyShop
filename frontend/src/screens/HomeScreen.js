@@ -15,8 +15,6 @@ useEffect(()=>{    //main thread
   dispatch(listProducts())
     
 },[dispatch])
-
-
   return (
     <>
     <h1>Latest Products </h1>
