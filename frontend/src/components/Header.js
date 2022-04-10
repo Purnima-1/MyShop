@@ -1,8 +1,14 @@
 import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useSelector } from 'react-redux'
+
 
 const Header = () => {
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+
   return (
     <header>
       <Navbar className="navbar"  expand='lg' collapseOnSelect>
@@ -14,7 +20,7 @@ const Header = () => {
         <Navbar.Collapse id = 'basic-navbar-nav'>
           <Nav className='ms-auto'>
             <LinkContainer to="/cart">
-            <Nav.Link><i className='fas fa-shopping-cart mx-1'></i>Cart</Nav.Link>
+            <Nav.Link> {cartItems.reduce((acc, item) => acc + item.qty, 0)}<i className='fas fa-shopping-cart mx-1'></i>Cart</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/login">
             <Nav.Link><i className='fas fa-user mx-1'></i>Sign In</Nav.Link>
