@@ -43,6 +43,33 @@ if(user){
 }
 })
 
+//@desc Register a new user
+//@route POST api/users
+//@access Public
 
+const registerUser = asyncHandler(async(req,res) => {
+  const { name,email,password } = req.body
+  const userExists = await Users.findOne({email})
 
-export {authUser,getUserProfile}
+  if(userExists) {
+    res.status(400)
+    throw newError('User already exists')
+  }
+  const user = await Users.create({
+    name, email, password
+  })
+  if(user){
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: generateToken(user._id),
+    })
+  } else{
+    res.status(400)
+    throw new Error('Invalid user data')
+  }
+})
+
+export {authUser,registerUser,getUserProfile}
