@@ -10,7 +10,8 @@ const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await Users.findOne({ email });
 
-  if (user && bcryptjs.compare(password, user.password)) {
+ // if (user && bcryptjs.compare(password, user.password)) {
+ if (user && user.matchPassword(password)){
     return res.json({
       _id: user._id,
       email: user.email,
@@ -24,4 +25,24 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-export {authUser}
+//@desc Get user profile
+//@route POST api/users/profile
+//@access Private
+const getUserProfile = asyncHandler(async(req,res) => {
+  const user = await Users.findById(req.user._id)
+if(user){
+  return res.json({
+    _id: user._id,
+    email: user.email,
+    name: user.name,
+    isAdmin: user.isAdmin,
+  }) 
+} else{
+  res.status(404)
+  throw new Error("User not found")
+}
+})
+
+
+
+export {authUser,getUserProfile}

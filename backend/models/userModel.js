@@ -1,6 +1,7 @@
+import bcryptjs from "bcryptjs";
 import mongoose from "mongoose";
 
-const userScehma = mongoose.Schema({
+const userSchema = mongoose.Schema({
 name:{
     type: String,
     required: true
@@ -20,5 +21,9 @@ isAdmin:{
     default: false
 }
 },{ timestamps: true })
- const Users = mongoose.model('Users', userScehma)
+
+userSchema.methods.matchPassword = async function(enteredPassword){
+    return await bcryptjs.compare(enteredPassword, this.password)
+}
+ const Users = mongoose.model('Users', userSchema)
  export default Users
