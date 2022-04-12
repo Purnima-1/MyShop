@@ -36,7 +36,7 @@ useEffect(() => {
             setEmail(user.password)
         }
     }
-},[dispatch,userInfo,user,navigate])
+    },[dispatch,userInfo,user,navigate])
 
 const submitHandler = (e) => {
     e.preventDefault()
@@ -46,14 +46,13 @@ const submitHandler = (e) => {
         dispatch(updateUserProfile({id: user._id, name, email,password}))
             }
 }
-
   return (
 <Row>
 <Col md={3}>
         <h2>User Profile</h2>
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
-        {success && <Message variant='success'>Profile Updated</Message>}
+        {success && <Message variant='success' >Profile Updated</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='name'>
@@ -96,7 +95,7 @@ const submitHandler = (e) => {
             ></Form.Control>
           </Form.Group>
 
-          <Button type='submit' variant='primary'>
+          <Button className ='my-2'type='submit' variant='primary'>
             Update
           </Button>
         </Form>

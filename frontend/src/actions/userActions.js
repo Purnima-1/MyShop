@@ -116,6 +116,7 @@ export const updateUserProfile = (user) => async (dispatch,getState) => {
         dispatch({
             type: USER_UPDATE_PROFILE_SUCCESS,
             payload: data
+            
         })
 
     } catch (error) {
