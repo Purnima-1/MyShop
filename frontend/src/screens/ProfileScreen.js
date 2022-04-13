@@ -46,6 +46,9 @@ const submitHandler = (e) => {
         dispatch(updateUserProfile({id: user._id, name, email,password}))
             }
 }
+// const deleteAcc= async (id) => {
+//       console.log('okay mam deleted');    
+// }
   return (
 <Row>
 <Col md={3}>
@@ -100,15 +103,14 @@ const submitHandler = (e) => {
           </Button>
         </Form>
       </Col>
-      <Col md={9}>
+      <Col md={4}>
         <h2>My Orders</h2>
       </Col>
+      {/* <Col md={5}>
+        <Button type='submit' onClick={deleteAcc} variant = 'primary'>Delete permanently</Button>
+      </Col> */}
 </Row>
-
-
-
-    
-  )
+      )
 }
 
 export default ProfileScreen
