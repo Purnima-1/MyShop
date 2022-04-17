@@ -46,8 +46,11 @@ const submitHandler = (e) => {
         dispatch(updateUserProfile({id: user._id, name, email,password}))
             }
 }
-// const deleteAcc= async (id) => {
-//       console.log('okay mam deleted');    
+// const deleteAcc= () => {
+//        dispatch(deleteUserAccount())  
+//        if(!user){
+//        navigate('/login')
+//        }
 // }
   return (
 <Row>

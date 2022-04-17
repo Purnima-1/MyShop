@@ -101,10 +101,14 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 });
+
+//@desc Delete user account
+//@route DELETE api/users
+//@access Private
 const deleteUser = asyncHandler(async (req, res) => {
   const user = await Users.findById(req.user._id);
   if (user) {
-    await Users.deleteOne(user);
+    await Users.findByIdAndDelete(user)
     res.json("user deleted");
   }
 });
@@ -114,5 +118,5 @@ export {
   registerUser,
   getUserProfile,
   updateUserProfile,
-  deleteUser,
+  
 };
