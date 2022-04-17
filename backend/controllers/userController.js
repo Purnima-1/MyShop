@@ -105,13 +105,13 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 //@desc Delete user account
 //@route DELETE api/users
 //@access Private
-const deleteUser = asyncHandler(async (req, res) => {
-  const user = await Users.findById(req.user._id);
-  if (user) {
-    await Users.findByIdAndDelete(user)
-    res.json("user deleted");
-  }
-});
+// const deleteUser = asyncHandler(async (req, res) => {
+//   const user = await Users.findById(req.user._id);
+//   if (user) {
+//     await Users.findByIdAndDelete(user)
+//     res.json("user deleted");
+//   }
+// });
 
 export {
   authUser,
