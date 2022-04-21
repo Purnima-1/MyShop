@@ -26,7 +26,7 @@ const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
 const {success} = userUpdateProfile
 
 const deleteUser = useSelector((state) => state.deleteUserAccount)  
-const {id} = deleteUser
+const {userId} = deleteUser
 useEffect(() => {
     if(!userInfo){
         navigate('/login')
@@ -49,7 +49,7 @@ const submitHandler = (e) => {
             }
 }
 const deleteAcc= () => {
-       dispatch(deleteUserAccount(id))  
+       dispatch(deleteUserAccount(userId))  
        if(!user){
        navigate('/login')
        }
