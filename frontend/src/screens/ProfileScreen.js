@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { getUserDetails, updateUserProfile } from '../actions/userActions'
+import { getUserDetails, updateUserProfile,deleteUserAccount } from '../actions/userActions'
 
 const ProfileScreen = () => {
 const [name,setName] = useState('')
@@ -25,6 +25,8 @@ const {userInfo} = userLogin
 const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
 const {success} = userUpdateProfile
 
+const deleteUser = useSelector((state) => state.deleteUserAccount)  
+const {id} = deleteUser
 useEffect(() => {
     if(!userInfo){
         navigate('/login')
@@ -46,12 +48,12 @@ const submitHandler = (e) => {
         dispatch(updateUserProfile({id: user._id, name, email,password}))
             }
 }
-// const deleteAcc= () => {
-//        dispatch(deleteUserAccount())  
-//        if(!user){
-//        navigate('/login')
-//        }
-// }
+const deleteAcc= () => {
+       dispatch(deleteUserAccount(id))  
+       if(!user){
+       navigate('/login')
+       }
+}
   return (
 <Row>
 <Col md={3}>
@@ -109,9 +111,9 @@ const submitHandler = (e) => {
       <Col md={4}>
         <h2>My Orders</h2>
       </Col>
-      {/* <Col md={5}>
+      <Col md={5}>
         <Button type='submit' onClick={deleteAcc} variant = 'primary'>Delete permanently</Button>
-      </Col> */}
+      </Col>
 </Row>
       )
 }
