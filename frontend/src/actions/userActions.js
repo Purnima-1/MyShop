@@ -13,9 +13,9 @@ import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
-  USER_DELETE_FAIL,
-  USER_DELETE_REQUEST,
-  USER_DELETE_SUCCESS,
+  // USER_DELETE_FAIL,
+  // USER_DELETE_REQUEST,
+  // USER_DELETE_SUCCESS,
 } from "../constants/userConstants";
 
 export const login = (email, password) => async (dispatch) => {
@@ -149,26 +149,26 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     });
   }
 };
-export const deleteUserAccount = (id) => async (dispatch) => {
-  try {
-    dispatch({
-      type: USER_DELETE_REQUEST,
-    });
+// export const deleteUserAccount = (id) => async (dispatch) => {
+//   try {
+//     dispatch({
+//       type: USER_DELETE_REQUEST,
+//     });
     
-    if (window.confirm("Are you sure? This can NOT be undone!")) {
-      await axios.delete(`/api/users/profile/${id}`);
-       dispatch({
-        type: USER_DELETE_SUCCESS,
-        payload: id,
-      });
-    }
-  } catch (error) {
-    dispatch({
-      type: USER_DELETE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+//     if (window.confirm("Are you sure? This can NOT be undone!")) {
+//       await axios.delete(`/api/users/profile/${id}`);
+//        dispatch({
+//         type: USER_DELETE_SUCCESS,
+//         payload: id,
+//       });
+//     }
+//   } catch (error) {
+//     dispatch({
+//       type: USER_DELETE_FAIL,
+//       payload:
+//         error.response && error.response.data.message
+//           ? error.response.data.message
+//           : error.message,
+//     });
+//   }
+// };
