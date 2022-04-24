@@ -149,6 +149,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     });
   }
 };
+
 // export const deleteUserAccount = (id) => async (dispatch) => {
 //   try {
 //     dispatch({
